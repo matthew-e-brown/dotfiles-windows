@@ -1,0 +1,13 @@
+[user]
+	name = Matthew Brown
+	email = matthew.e.brown.17@gmail.com
+[core]
+	editor = vim
+[alias]
+	ck = checkout
+	ch = checkout
+	st = status
+	lg = log --graph --decorate --all --oneline
+	lg1 = log --graph --decorate --all
+[init]
+	defaultBranch = master
