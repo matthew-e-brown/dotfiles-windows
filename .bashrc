@@ -1,5 +1,8 @@
 # Alias for dotfiles git repo
-alias dots='$(which git) --git-dir=$HOME/.dots/ --work-tree=$HOME'
+alias dots='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
 # Make shit legible
 PROMPT_DIRTRIM=2
+
+# 'import' scripts
+alias flac-exchange='python ~/Scripts/flac-exchange.py'
