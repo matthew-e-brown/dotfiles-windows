@@ -29,6 +29,7 @@
             "keys": "ctrl+v"
         }
     ],
+    "alwaysShowTabs": false,
     "confirmCloseAllTabs": false,
     "copyFormatting": "html",
     "copyOnSelect": false,
@@ -42,10 +43,13 @@
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "Fira Code",
+                "face": "Rec Mono Semicasual",
                 "size": 11
             },
-            "padding": "12"
+            "opacity": 100,
+            "padding": "14",
+            "scrollbarState": "visible",
+            "useAcrylic": false
         },
         "list": 
         [
@@ -96,7 +100,7 @@
             "name": "Campbell",
             "purple": "#881798",
             "red": "#C50F1F",
-            "selectionBackground": "#FFFFFF",
+            "selectionBackground": "#FFFEFE",
             "white": "#CCCCCC",
             "yellow": "#C19C00"
         },

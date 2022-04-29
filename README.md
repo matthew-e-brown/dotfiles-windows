@@ -35,12 +35,12 @@ be used.
 
 1.  Find the Windows Terminal settings directory. If installed from the Windows
     Store, it should be inside `C:\Users\Matthew\AppData\Local\Packages\` and
-    called `Microsoft.WindowsTerminal_[some junk]`. You want the `LocalState`
+    called `Microsoft.WindowsTerminal_8wekyb3d8bbwe`. You want the `LocalState`
     folder.
 2.  Delete the `settings.json` that's already there,
 3.  Replace it with a symlink using the following command:  
     ```
-    mklink /H "[path to WindowsTerminal]\LocalState\settings.json" "C:\Users\Matthew\.terminal-settings.json"
+    mklink /H "C:\Users\Matthew\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" "C:\Users\Matthew\.terminal-settings.json"
     ```
     - You need to use a full path for this to work
     - It's probably best to close Windows Terminal and do this with `cmd` while
