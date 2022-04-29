@@ -3,6 +3,7 @@
 	email = matthew.e.brown.17@gmail.com
 [core]
 	editor = vim
+	fsmonitor = true
 [alias]
 	ck = checkout
 	ch = checkout
