@@ -10,3 +10,7 @@ PROMPT_DIRTRIM=2
 
 # 'import' scripts
 alias flac-exchange='python ~/Scripts/flac-exchange.py'
+
+
+# Start in `Dropbox` folder, since I use it most
+cd ~/Dropbox
