@@ -12,5 +12,15 @@ PROMPT_DIRTRIM=2
 alias flac-exchange='python ~/Scripts/flac-exchange.py'
 
 
+# https://github.com/docker-archive/toolbox/issues/673
+function docker() {
+	(export MSYS_NO_PATHCONV=1; "docker.exe" "$@")
+}
+
+function docker-compose() {
+	(export MSYS_NO_PATHCONV=1; "docker-compose.exe" "$@")
+}
+
+
 # Start in `Dropbox` folder, since I use it most
 cd ~/Dropbox
