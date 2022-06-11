@@ -21,6 +21,3 @@ function docker-compose() {
 	(export MSYS_NO_PATHCONV=1; "docker-compose.exe" "$@")
 }
 
-
-# Start in `Dropbox` folder, since I use it most
-cd ~/Dropbox
