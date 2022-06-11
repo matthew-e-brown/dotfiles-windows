@@ -20,12 +20,13 @@ given an alias or function in `.bashrc`.
 To set up, run this on a new system (before creating conflicting files, like a
 `.gitconfig`):
 
-```
-git clone [URL] --bare $HOME/.dots
-git --git-dir=$HOME/.dots/ --work-tree=$HOME checkout
+```console
+$ git clone [URL] --bare $HOME/.dots
+$ git --git-dir=$HOME/.dots/ --work-tree=$HOME checkout
 ```
 
-This will create `.bashrc` and thus add the `dots` alias.
+Cloning this repo will bring the `.bashrc` with it, thereby adding the `dots`
+alias automatically.
 
 
 <!--
