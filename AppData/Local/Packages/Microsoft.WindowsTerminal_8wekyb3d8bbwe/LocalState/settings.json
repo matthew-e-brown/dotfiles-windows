@@ -58,7 +58,8 @@
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
                 "hidden": false,
                 "name": "Git Bash",
-                "source": "Git"
+                "source": "Git",
+                "startingDirectory": "%USERPROFILE%\\Dropbox"
             },
             {
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",

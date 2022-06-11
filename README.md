@@ -28,6 +28,17 @@ git --git-dir=$HOME/.dots/ --work-tree=$HOME checkout
 This will create `.bashrc` and thus add the `dots` alias.
 
 
+<!--
+
++----------------------------------------------------------------------------+
+|                                                                            |
+|   I am now just committing the full path to Windows Terminal's settings.   |
+|   Since WT replaces the settings file every time you edit it (to provide   |
+|   backups), the hard-link breaks as soon as you use the GUI to change      |
+|   any settings.                                                            |
+|                                                                            |
++----------------------------------------------------------------------------+
+
 ### Windows Terminal
 
 Because of where Windows Terminal stores its `settings.json`, a hard-link has to
@@ -46,6 +57,8 @@ be used.
     - It's probably best to close Windows Terminal and do this with `cmd` while
       you're messing with settings, just so Windows Terminal doesn't regenerate
       the file.
+
+-->
 
 
 
