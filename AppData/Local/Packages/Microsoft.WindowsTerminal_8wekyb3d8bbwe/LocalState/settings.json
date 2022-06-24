@@ -29,10 +29,15 @@
             "keys": "ctrl+v"
         }
     ],
+    "startOnUserLogin": false,
+    "showTerminalTitleInTitlebar": false,
     "alwaysShowTabs": false,
     "confirmCloseAllTabs": false,
+    "tabSwitcherMode": "disabled",
+    "tabWidthMode": "equal",
     "copyFormatting": "html",
     "copyOnSelect": false,
+    "wordDelimiters": " /\\()\"'-_.,:;<>~!@#$%^&*|+=[]{}~?\u2502",
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
     "profiles": 
     {
@@ -289,8 +294,5 @@
             "white": "#C0C0C0",
             "yellow": "#808000"
         }
-    ],
-    "showTerminalTitleInTitlebar": false,
-    "tabSwitcherMode": "disabled",
-    "tabWidthMode": "equal"
+    ]
 }
