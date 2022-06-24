@@ -8,11 +8,11 @@
 [alias]
 	ck = checkout
 	ch = checkout
-	st = status
+	st = status -sb
+	stat = status
 	lg = log --graph --decorate --all --oneline
 	lg1 = log --graph --decorate --all
 	amend = commit --amend --no-edit
-	ammend = amend # I always fuck this up lol
 [interactive]
 	diffFilter = delta --color-only
 [merge]
