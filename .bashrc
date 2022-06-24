@@ -19,8 +19,8 @@ function docker-compose() {
 
 
 # set these once here so we don't have to run `tput setaf` on every command
-__PROMPT_BEFORE_GIT="[\[$(tput setaf 2)\]\u@\h \[$(tput setaf 3)\]\w\[$(tput setaf 6)\]"
-__PROMPT_AFTER_GIT="\[$(tput sgr0)\]]\[$(tput setaf 13)\]$\[$(tput sgr0)\] "
+__PROMPT_BEFORE_GIT="[\[$(tput setaf 2)\]\u@\h \[$(tput setaf 3)\]\w\[$(tput sgr0)\]]\[$(tput setaf 6)\]"
+__PROMPT_AFTER_GIT=" \[$(tput setaf 13)\]$\[$(tput sgr0)\] "
 
 PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "$__PROMPT_BEFORE_GIT" "$__PROMPT_AFTER_GIT" " (%s)"'
