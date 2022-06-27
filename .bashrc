@@ -25,6 +25,8 @@ __PROMPT_AFTER_GIT=" \[$(tput setaf 13)\]$\[$(tput sgr0)\] "
 PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "$__PROMPT_BEFORE_GIT" "$__PROMPT_AFTER_GIT" " (%s)"'
 
-GIT_PS1_SHOWUNTRACKEDFILES=yes		# enable showing untracked in dirty state
-GIT_PS1_SHOWDIRTYSTATE=yes		# * for modified, + for staged, % for untracked
-GIT_PS1_SHOWUPSTREAM=auto		# < for behind, > for ahead, = for even
+
+# -- These kind of slow down the prompt on my laptop in battery mode, so I'll leave them off for now --
+# GIT_PS1_SHOWUNTRACKEDFILES=yes		# enable showing untracked in dirty state
+# GIT_PS1_SHOWDIRTYSTATE=yes			# * for modified, + for staged, % for untracked
+# GIT_PS1_SHOWUPSTREAM=auto			# < for behind, > for ahead, = for even
