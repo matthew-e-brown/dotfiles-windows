@@ -4,7 +4,8 @@
 [core]
 	editor = vim
 	pager = delta
-	fsmonitor = true
+	safecrlf = false  # diables 'CRLF will be replaced with LF' warnings
+	fsmonitor = true  # can help speed up git commands
 [alias]
 	ck = checkout
 	ch = checkout
