@@ -9,13 +9,13 @@ function cpwd() {
 alias flac-exchange='python ~/Scripts/flac-exchange.py'
 
 # https://github.com/docker-archive/toolbox/issues/673
-function docker() {
-	(export MSYS_NO_PATHCONV=1; "docker.exe" "$@")
-}
+# function docker() {
+# 	(export MSYS_NO_PATHCONV=1; "docker.exe" "$@")
+# }
 
-function docker-compose() {
-	(export MSYS_NO_PATHCONV=1; "docker-compose.exe" "$@")
-}
+# function docker-compose() {
+# 	(export MSYS_NO_PATHCONV=1; "docker-compose.exe" "$@")
+# }
 
 
 # set these once here so we don't have to run `tput setaf` on every command
