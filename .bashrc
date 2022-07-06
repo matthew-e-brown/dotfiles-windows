@@ -22,6 +22,15 @@ function docker-compose() {
 __PROMPT_BEFORE_GIT="[\[$(tput setaf 2)\]\u@\h \[$(tput setaf 3)\]\w\[$(tput sgr0)\]]\[$(tput setaf 6)\]"
 __PROMPT_AFTER_GIT=" \[$(tput setaf 13)\]$\[$(tput sgr0)\] "
 
+# If this is an xterm, set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+	__PROMPT_BEFORE_GIT="\[\e]0;\u@\h:\W\a\]$__PROMPT_BEFORE_GIT"
+	;;
+*)
+	;;
+esac
+
 PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "$__PROMPT_BEFORE_GIT" "$__PROMPT_AFTER_GIT" " (%s)"'
 
