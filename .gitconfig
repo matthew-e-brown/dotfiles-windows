@@ -1,6 +1,9 @@
 [user]
 	name = Matthew Brown
 	email = matthew.e.brown.17@gmail.com
+	signingkey = B0B1F8189AE6CCFE5E7F354A3ACCD07F1192037C
+[commit]
+	gpgsign = true
 [core]
 	editor = vim
 	pager = delta
