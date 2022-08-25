@@ -4,9 +4,9 @@ const https = require('https');
 const { EOL } = require('os');
 
 const API_URL = `https://api-ipv4.porkbun.com/api/json/v3/`;
-const LOG_SIZE = 1024;
+const LOG_SIZE = 10_000;
 const LOG_FILE = path.resolve(__dirname, `./dns.log`);
-const CONFIG_FILE = path.resolve(__dirname, `./.config.json`);
+const CONFIG_FILE = path.resolve(__dirname, `./config.json`);
 
 
 /**
@@ -27,7 +27,7 @@ const CONFIG_FILE = path.resolve(__dirname, `./.config.json`);
  * It will write its results into `dns.log`, which will also (by default) live next to this script
  * in the same directory.
  *
- * @see https://github.com/porkbundomains/porkbun-dynamic-dns-python
+ * @see {@link https://github.com/porkbundomains/porkbun-dynamic-dns-python}
  */
 
 
