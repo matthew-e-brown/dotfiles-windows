@@ -1,99 +1,144 @@
-import sys
-import shutil
-import subprocess
-from os import path, remove
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from os import remove
+from sys import stdout, stderr
 from glob import glob, escape
-from argparse import ArgumentParser
+from shutil import copytree, rmtree
+from os.path import join, dirname, basename, splitext
+from subprocess import run
 
-prog_desc = """
-Recursively convert a directory of FLAC files to either MP3 or AIFF to be
-imported into iTunes.\n  
-By default, this script duplicates the target directories before converting
-their contents (the original files are untouched).
-"""
-
-parser = ArgumentParser(prog="flac-exchange", description=prog_desc)
-
-parser.add_argument('format', choices=['mp3', 'aiff'], type=str,
-                    help="the format to convert the FLAC to")
-
-parser.add_argument('dirs', nargs='+', type=str,
-                    help="the folder(s) in which to find FLAC files")
-
-parser.add_argument('-o', '--overwrite', action='store_true', required=False,
-                    help="overwrite the output directories if they already exist")
-
-parser.add_argument('-v', '--verbose', action='store_true', required=False,
-                    help="Show FFMPEG's stdout")
-
-args = parser.parse_args()
+from typing import Iterable
 
 
-out_type = args.format
-# Cut off trailing slashes that tend to confuse path.basename
-src_dirs = [ d[:-1] if d[-1] == '\\' or d[-1] == '/' else d for d in args.dirs ]
-# *Sibling* directory of sources with [TYPE] before it
-out_dirs = [ path.join(path.dirname(d), f"[{out_type.upper()}] {path.basename(d)}") for d in src_dirs ]
+def main(out_type: str, src_dirs: Iterable[str], overwrite: bool = False, verbose: bool = False) -> int:
+    """
+    Recursively convert a directory of FLAC files to either MP3 or AIFF to be imported into iTunes.
 
-for src, out in zip(src_dirs, out_dirs):
-  print(f"\nCopying \"{src}\" to \"{out}\"")
+    This script duplicates the target directories before converting their contents (the original
+    files are untouched).
 
-  # Copy the tree
-  done = False
-  while not done:
-    try:
-      shutil.copytree(src, out)
-      done = True
-    except FileExistsError:
-      print(f"    \"{out}\" already exists",
-            file=sys.stderr if not args.overwrite else sys.stdout)
+    :param str out_type:            The to convert FLAC into, either MP3 or AIFF.
+    :param Iterable[str] src_dirs:  One or more directories to clone and convert.
+    :param bool overwrite:          Whether or not output directories should be overwritten if they already exist.
+    :param bool verbose:            If FFMpeg's stdout (technically, stderr) should be visible.
+    :rtype:                         int
+    :return:                        A status code; 0 for success, 1 for failure
+    """
 
-      # File exists... should we overwrite it?
-      if args.overwrite:
-        print("    Erasing existing directory")
-        try:
-          shutil.rmtree(out)
-          # Couldn't delete file...
-        except PermissionError as err:
-          print(err.strerror, file=sys.stderr)
-          print("\nSometimes this can happen arbitrarily. Try again.",
-                file=sys.stderr)
-          sys.exit(1)
-        # while loop; retry copying
-      else:
-        print("    Refusing to overwrite output directory without overwrite flag",
-              file=sys.stderr)
-        sys.exit(1)
-  del done
+    # Strip trailing slashes, which can confuse glob
+    src_dirs = [ s.rstrip('\\/') for s in src_dirs ]
+    out_dirs = [ join(dirname(d), f"[{out_type.upper()}] {basename(d)}") for d in src_dirs ]
 
-  # Find the flac files to convert
-  print("\nSearching for *.flac files")
+    for src, out in zip(src_dirs, out_dirs):
+        print(f"\nCopying \"{src}\" to \"{out}\"")
 
-  flac_files = glob(f"{escape(out)}/**/*.flac", recursive=True)
-  dest_files = [ f"{path.splitext(f)[0]}.{out_type.lower()}" for f in flac_files ]
+        # Copy the whole thing
+        done = False
+        while not done:
+            try:
+                copytree(src, out)
+                done = True
+            except FileExistsError:
+                file = stdout if overwrite else stderr
+                print(f"    \"{out}\" already exists", file=file)
 
-  # Determine the right options for AIFF or MP3
-  options = []
-  if out_type == 'aiff': options += [ '-write_id3v2', '1' ]
-  elif out_type == 'mp3': options += [ '-ab', '320k' ]
+                if overwrite:
+                    try:
+                        rmtree(out)
+                    except PermissionError as err:
+                        print(err.strerror, file=stderr)
+                        print("\nMaybe try it again?")
+                        return 1
+                else:
+                    print("\nRefusing to overwrite output directory without overwrite flag.", file=stderr)
+                    return 1
+        del done
 
-  print("\nConverting *.flac files, using the command:")
-  print(f"ffmpeg -i [FLAC] {' '.join(options)} -c:v copy [DEST]\n")
+        print("\nSearching copied directory for *.flac files...")
 
-  # Actually do the converting
-  for flac, dest in zip(flac_files, dest_files):
-    print(f"    Converting {flac}")
+        flac_files = glob(f"{escape(out)}/**/*.flac", recursive=True)
+        dest_files = [ f"{splitext(f)[0]}.{out_type.lower()}" for f in flac_files ]
 
-    command = [ 'ffmpeg', '-i', flac ] + options + [ '-c:v', 'copy', dest ]
-    if not args.verbose: command += [ '-loglevel', 'error' ]
+        # Determine what options to pass to FFMpeg
+        options = [ ]
+        if out_type == 'aiff':
+            options += [ '-write_id3v2', '1', '-c:a', 'pcm_s16be' ]
+        elif out_type == 'mp3':
+            options += [ '-ab', '320k', '-c:a', 'mp3' ]
 
-    subprocess.run(command)
+        print("\nConverting *.flac files, using the command:")
+        print(f"ffmpeg -i ... {' '.join(options)} -c:v copy ...\n")
 
-  print("\nRemoving source *.flac files\n")
+        # Call FFMpeg
+        for flac, dest in zip(flac_files, dest_files):
+            print(f"    Converting {flac}")
 
-  for flac in flac_files:
-    print(f"    Removing {flac}")
-    remove(flac)
+            command = [ 'ffmpeg', '-i', flac, *options, '-c:v', 'copy', dest ]
+            if not verbose:
+                command += [ '-loglevel', 'error' ]
+            if overwrite:
+                command += [ '-y' ]
 
-print("\nDone!")
-sys.exit(0)
+            run(command)
+
+        print("\nRemoving source *.flac files from copied directory...\n")
+
+        for flac in flac_files:
+            print(f"    Removing {flac}")
+            remove(flac)
+
+    return 0
+
+
+if __name__ == '__main__':
+
+    from os import linesep
+    from argparse import ArgumentParser, RawDescriptionHelpFormatter
+
+    # Generate description text by stripping main's doc-string
+    description = ( line.lstrip() for line in main.__doc__.splitlines() )
+    description = ( line for line in description if not line.strip().startswith(':') )
+    description = linesep.join(description).strip()
+
+    parser = ArgumentParser(
+        prog="flac-exchange",
+        description=description,
+        formatter_class=RawDescriptionHelpFormatter
+    )
+
+    parser.add_argument(
+        'format',
+        choices=[ 'mp3', 'aiff' ],
+        type=str,
+        help="the format to convert the FLAC to"
+    )
+
+    parser.add_argument(
+        'dirs',
+        nargs='+',
+        type=str,
+        help="the folder(s) in which to find FLAC files"
+    )
+
+    parser.add_argument(
+        '-o',
+        '--overwrite',
+        action='store_true',
+        required=False,
+        help="overwrite the output directories if they already exist"
+    )
+
+    parser.add_argument(
+        '-v',
+        '--verbose',
+        action='store_true',
+        required=False,
+        help="show FFMPEG's stdout"
+    )
+
+    args = parser.parse_args()
+    code = main(args.format, args.dirs, args.overwrite, args.verbose)
+
+    if not code:
+        print("\nDone!")
