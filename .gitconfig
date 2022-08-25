@@ -27,6 +27,7 @@
 	colorMoved = default
 	navigate = true
 [delta]
+	paging = always
 	side-by-side = true
 	line-numbers = true
 	features = decorations
