@@ -2,21 +2,11 @@
 alias dots='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
 function cpwd() {
-	pwd | tr -d '\r\n' | clip
+	echo -n "\"$(pwd | tr -d '\r\n')\"" | clip
 }
 
 # 'import' scripts
 alias flac-exchange='python ~/Scripts/flac-exchange.py'
-
-# https://github.com/docker-archive/toolbox/issues/673
-# function docker() {
-# 	(export MSYS_NO_PATHCONV=1; "docker.exe" "$@")
-# }
-
-# function docker-compose() {
-# 	(export MSYS_NO_PATHCONV=1; "docker-compose.exe" "$@")
-# }
-
 
 # set these once here so we don't have to run `tput setaf` on every command
 __PROMPT_BEFORE_GIT="[\[$(tput setaf 2)\]\u@\h \[$(tput setaf 3)\]\w\[$(tput sgr0)\]]\[$(tput setaf 6)\]"
