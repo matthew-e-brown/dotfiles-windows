@@ -163,7 +163,7 @@ const request = (url, body, options = { method: 'POST' }) => new Promise((resolv
         }
 
     } catch (err) {
-        resultMessage = err;
+        resultMessage = err || 'Something went wrong.';
         process.exitCode = 1;
     } finally {
         console.log(resultMessage);
