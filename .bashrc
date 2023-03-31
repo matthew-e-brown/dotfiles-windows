@@ -38,4 +38,4 @@ PROMPT_COMMAND='__git_ps1 "$__PROMPT_BEFORE_GIT" "$__PROMPT_AFTER_GIT" " (%s)"'
 # Environment variables
 # -----------------------------------------------------------------------------
 
-export LESS='-RQ'
+export LESS='-FRQ'
