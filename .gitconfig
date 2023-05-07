@@ -9,6 +9,12 @@
 	pager = delta
 	safecrlf = false  # diables 'CRLF will be replaced with LF' warnings
 	fsmonitor = true  # can help speed up git commands
+	packedGitLimit = 512m
+	packedGitWindowSize = 512m
+[pack]
+	deltaCacheSize = 2047m
+	packSizeLimit = 2047m
+	windowMemory = 2047m
 [alias]
 	ck = checkout
 	ch = checkout
@@ -27,7 +33,6 @@
 	colorMoved = default
 	navigate = true
 [delta]
-	paging = always
 	side-by-side = true
 	line-numbers = true
 	features = decorations
