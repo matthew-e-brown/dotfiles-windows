@@ -44,7 +44,7 @@
             "font":
             {
                 "face": "Rec Mono Semicasual",
-                "size": 11
+                "size": 11.0
             },
             "opacity": 100,
             "padding": "14",
@@ -69,14 +69,20 @@
                 "startingDirectory": "/home/matt"
             },
             {
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
-                "name": "Windows PowerShell"
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
             },
             {
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": true,
+                "name": "Windows PowerShell"
             }
         ]
     },
@@ -294,5 +300,6 @@
     "startOnUserLogin": false,
     "tabSwitcherMode": "disabled",
     "tabWidthMode": "titleLength",
+    "themes": [],
     "wordDelimiters": " /\\()\"'-_.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
