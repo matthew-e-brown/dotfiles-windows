@@ -4,6 +4,8 @@
 	signingkey = B0B1F8189AE6CCFE5E7F354A3ACCD07F1192037C
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main
 [core]
 	editor = vim
 	pager = delta
@@ -36,5 +38,3 @@
 	side-by-side = true
 	line-numbers = true
 	features = decorations
-[init]
-	defaultBranch = main
