@@ -31,6 +31,8 @@
 	diffFilter = delta --color-only
 [merge]
 	conflictstyle = diff3
+[push]
+	autoSetupRemote = true
 [diff]
 	colorMoved = default
 	navigate = true
