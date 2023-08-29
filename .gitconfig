@@ -32,7 +32,7 @@
 [merge]
 	conflictstyle = diff3
 [push]
-	autoSetupRemote = true
+	autoSetupRemote = false
 [diff]
 	colorMoved = default
 	navigate = true
