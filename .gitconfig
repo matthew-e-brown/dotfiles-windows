@@ -9,6 +9,7 @@
 [core]
 	editor = vim
 	pager = delta
+	autocrlf = input  # "checkout as-is, commit unix-style"
 	safecrlf = false  # diables 'CRLF will be replaced with LF' warnings
 	fsmonitor = true  # can help speed up git commands
 	packedGitLimit = 512m
