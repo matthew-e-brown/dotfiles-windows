@@ -13,11 +13,6 @@ single_line_if_else_max_width = 80
 use_field_init_shorthand = true
 match_block_trailing_comma = true
 
-# I do want *sets* of impl-items re-ordered (type first, then const, etc),
-# but I don't want those items to be re-ordered amongst themselves (dont't
-# sort them!!). This currently isn't an option.
-reorder_impl_items = false
-
 imports_layout = "HorizontalVertical"
 imports_granularity = "Module"
 group_imports = "StdExternalCrate"
@@ -28,4 +23,11 @@ trailing_comma = "Vertical"
 newline_style = "Unix"
 tab_spaces = 4
 
-format_code_in_doc_comments = true
+# It currently isn't possible to add `#[rustfmt::skip]` attributes to
+# code in doc-comments. Will re-enable this when it becomes possible.
+# For now, this gives me the most control.
+#
+# See:
+# - https://github.com/rust-lang/rustfmt/issues/5623
+# - https://github.com/rust-lang/rustfmt/issues/3348
+# format_code_in_doc_comments = true
