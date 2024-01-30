@@ -4,32 +4,25 @@
 	signingkey = B0B1F8189AE6CCFE5E7F354A3ACCD07F1192037C
 [commit]
 	gpgsign = true
-[init]
-	defaultBranch = main
+[alias]
+	ck = checkout
+	sw = switch
+	st = status -sb
+	stat = status
+	un = restore --staged
+	lg = log --graph --decorate --all --oneline
+	lg1 = log --graph --decorate --all
+	amend = commit --amend --no-edit
+
 [core]
 	editor = vim
 	pager = delta
 	autocrlf = input  # "checkout as-is, commit unix-style"
 	safecrlf = false  # diables 'CRLF will be replaced with LF' warnings
 	fsmonitor = true  # can help speed up git commands
-	packedGitLimit = 512m
-	packedGitWindowSize = 512m
-[pack]
-	deltaCacheSize = 2047m
-	packSizeLimit = 2047m
-	windowMemory = 2047m
-[alias]
-	ck = checkout
-	ch = checkout
-	st = status -sb
-	stat = status
-	un = restore --staged
-	unstage = restore --staged
-	lg = log --graph --decorate --all --oneline
-	lg1 = log --graph --decorate --all
-	amend = commit --amend --no-edit
-[interactive]
-	diffFilter = delta --color-only
+
+[init]
+	defaultBranch = main
 [merge]
 	conflictstyle = diff3
 [push]
@@ -37,7 +30,20 @@
 [diff]
 	colorMoved = default
 	navigate = true
+
+# Config for github.com/dandavison/delta
 [delta]
 	side-by-side = true
 	line-numbers = true
 	features = decorations
+[interactive]
+	diffFilter = delta --color-only
+
+# File transfer limits, to make pushing and pulling work more consistently
+[core]
+	packedGitLimit = 512m
+	packedGitWindowSize = 512m
+[pack]
+	deltaCacheSize = 2047m
+	packSizeLimit = 2047m
+	windowMemory = 2047m
