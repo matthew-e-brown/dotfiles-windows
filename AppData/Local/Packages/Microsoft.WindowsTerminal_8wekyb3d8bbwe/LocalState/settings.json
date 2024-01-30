@@ -1,14 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -17,7 +13,11 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": 
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -34,32 +34,34 @@
     "copyFormatting": "html",
     "copyOnSelect": false,
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "closeOnExit": "always",
             "colorScheme": "Campbell",
-            "font": 
+            "font":
             {
                 "face": "Rec Mono Semicasual",
                 "size": 11.0
             },
             "padding": "14",
-            "scrollbarState": "visible"
+            "scrollbarState": "visible",
+            "useAtlasEngine": false
         },
-        "list": 
+        "list":
         [
             {
                 "closeOnExit": "always",
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
                 "hidden": false,
+                "icon": "C:/Program Files/Git/git-bash.exe",
                 "name": "Git Bash",
                 "source": "Git",
                 "startingDirectory": "%USERPROFILE%\\Dropbox"
@@ -67,7 +69,7 @@
             {
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
-                "name": "Ubuntu-20.04",
+                "name": "Ubuntu 20.04",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "/home/matt"
             },
@@ -84,6 +86,13 @@
                 "name": "Command Prompt"
             },
             {
+                "guid": "{17bf3de4-5353-5709-bcf9-835bd952a95e}",
+                "hidden": false,
+                "icon": "%USERPROFILE%\\.wt-icons\\Ubuntu-logo-2022-CroppedScaled.png",
+                "name": "Ubuntu 22.04",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
                 "colorScheme": "Campbell Powershell",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": true,
@@ -91,7 +100,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
@@ -278,6 +287,29 @@
             "yellow": "#C4A000"
         },
         {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-22.04-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -305,51 +337,7 @@
     "startOnUserLogin": false,
     "tabSwitcherMode": "disabled",
     "tabWidthMode": "titleLength",
-    "themes": 
-    [
-        {
-            "name": "legacyDark",
-            "tab": 
-            {
-                "background": null,
-                "showCloseButton": "always",
-                "unfocusedBackground": null
-            },
-            "window": 
-            {
-                "applicationTheme": "dark",
-                "useMica": false
-            }
-        },
-        {
-            "name": "legacyLight",
-            "tab": 
-            {
-                "background": null,
-                "showCloseButton": "always",
-                "unfocusedBackground": null
-            },
-            "window": 
-            {
-                "applicationTheme": "light",
-                "useMica": false
-            }
-        },
-        {
-            "name": "legacySystem",
-            "tab": 
-            {
-                "background": null,
-                "showCloseButton": "always",
-                "unfocusedBackground": null
-            },
-            "window": 
-            {
-                "applicationTheme": "system",
-                "useMica": false
-            }
-        }
-    ],
+    "themes": [],
     "useAcrylicInTabRow": true,
     "wordDelimiters": " /\\()\"'-_.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
