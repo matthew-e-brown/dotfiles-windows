@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -17,7 +17,7 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -27,6 +27,10 @@
         {
             "command": "paste",
             "keys": "ctrl+v"
+        },
+        {
+            "command": "toggleBlockSelection",
+            "keys": "ctrl+alt+v"
         }
     ],
     "alwaysShowTabs": true,
@@ -34,19 +38,19 @@
     "copyFormatting": "html",
     "copyOnSelect": false,
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "closeOnExit": "always",
             "colorScheme": "Campbell",
-            "font":
+            "font": 
             {
                 "face": "Rec Mono Semicasual",
                 "size": 11.0
@@ -55,7 +59,7 @@
             "scrollbarState": "visible",
             "useAtlasEngine": false
         },
-        "list":
+        "list": 
         [
             {
                 "closeOnExit": "always",
@@ -100,7 +104,7 @@
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
