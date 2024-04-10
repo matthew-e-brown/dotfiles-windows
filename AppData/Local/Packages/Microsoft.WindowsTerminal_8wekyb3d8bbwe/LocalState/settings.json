@@ -53,6 +53,7 @@
             "font":
             {
                 "face": "Maple Mono NF",
+                "size": 11,
                 "features": {
                     "cv01": 1,
                     "cv02": 1
