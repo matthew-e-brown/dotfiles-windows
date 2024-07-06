@@ -10,6 +10,7 @@
 	st = status -sb
 	stat = status
 	un = restore --staged
+	unstage = restore --staged
 	lg = log --graph --decorate --all --oneline
 	lg1 = log --graph --decorate --all
 	amend = commit --amend --no-edit
