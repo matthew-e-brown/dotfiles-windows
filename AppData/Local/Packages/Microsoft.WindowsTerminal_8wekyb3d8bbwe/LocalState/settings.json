@@ -1,10 +1,14 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -13,11 +17,7 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -38,32 +38,33 @@
     "copyFormatting": "html",
     "copyOnSelect": false,
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "closeOnExit": "always",
             "colorScheme": "Campbell",
-            "font":
+            "font": 
             {
                 "face": "Maple Mono NF",
-                "size": 11,
-                "features": {
+                "features": 
+                {
                     "cv01": 1,
                     "cv02": 1
-                }
+                },
+                "size": 11.0
             },
             "padding": "14",
             "scrollbarState": "visible",
             "useAtlasEngine": false
         },
-        "list":
+        "list": 
         [
             {
                 "closeOnExit": "always",
@@ -105,10 +106,16 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": true,
                 "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{4ff56d04-d9cf-57ea-bae2-ad396374e7e3}",
+                "hidden": true,
+                "name": "Ubuntu 22.04.5 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
