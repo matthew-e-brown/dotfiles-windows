@@ -8,6 +8,7 @@
 	ck = checkout
 	sw = switch
 	st = status -sb
+	br = branch
 	stat = status
 	un = restore --staged
 	unstage = restore --staged
