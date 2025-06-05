@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -17,7 +17,7 @@
             "id": "User.find"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -38,7 +38,7 @@
     "copyFormatting": "html",
     "copyOnSelect": false,
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-    "keybindings":
+    "keybindings": 
     [
         {
             "id": "User.paste",
@@ -61,19 +61,19 @@
             "keys": "ctrl+c"
         }
     ],
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "closeOnExit": "always",
             "colorScheme": "Campbell",
-            "font":
+            "font": 
             {
                 "face": "Maple Mono Custom NF",
                 "size": 11
@@ -81,7 +81,7 @@
             "padding": "14",
             "scrollbarState": "visible"
         },
-        "list":
+        "list": 
         [
             {
                 "closeOnExit": "always",
@@ -116,16 +116,10 @@
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": true,
                 "name": "Windows PowerShell"
-            },
-            {
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": true,
-                "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#300A24",
@@ -152,7 +146,6 @@
         }
     ],
     "showTerminalTitleInTitlebar": true,
-    "startOnUserLogin": false,
     "tabSwitcherMode": "disabled",
     "tabWidthMode": "titleLength",
     "themes": [],
