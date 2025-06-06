@@ -71,13 +71,15 @@
     {
         "defaults": 
         {
-            "closeOnExit": "always",
+            "closeOnExit": "graceful",
             "colorScheme": "Campbell",
+            "experimental.rightClickContextMenu": true,
             "font": 
             {
                 "face": "Maple Mono Custom NF",
                 "size": 11
             },
+            "historySize": 16001,
             "padding": "14",
             "scrollbarState": "visible"
         },
