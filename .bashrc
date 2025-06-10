@@ -8,67 +8,61 @@ alias dots='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
 # pwd wrapper that uses cygpath to print things nicely
 alias pwd='__pwd'
+alias cpwd='__pwd -C'
 
 __pwd() {
 	local OPTIND OPTARG OPT
-	local help=n help_fd=1
-	local pwd_opts=L # Same as pwd's default
-	local cyg_opts=m # Default mode is --mixed
-	local cyg_long=n
+	local help=no help_fd=1
+	local copy=no
+	local pwd_opts=L # (L option is pwd's default)
+	local cyg_opts=m
+	local cyg_long=no
+	local path
 
-	while getopts ":wmuLPlh" OPT; do
+	while getopts ":wmuLPlhC" OPT; do
 		case "$OPT" in
 			w|m|u) cyg_opts=$OPT ;;
 			L|P) pwd_opts=$OPT ;;
-			l) cyg_long=y ;;
-			h) help=y ;;
-			?) help=y; help_fd=2; echo "pwd: unknown option -${OPTARG}" 1>&2 ;;
-			*) help=y; help_fd=2 ;;
+			l) cyg_long=yes ;;
+			C) copy=yes ;;
+			h) help=yes ;;
+			?) help=yes; help_fd=2; echo "pwd: unknown option -${OPTARG}" 1>&2 ;;
+			*) help=yes; help_fd=2 ;;
 		esac
 	done
 
-	if [ $help = y ]; then
+	if [ $help = yes ]; then
 		cat <<-EOF 1>&$help_fd
 		Usage: pwd [-LPwmu]
-			Print the name of the current working directory.
+		    Print the name of the current working directory.
 
 		Options:
-			-L        (default) Print path with symbolic links.
-			-P        Print path without any symbolic links.
-			-m        (default) Like --windows, but with forward slashes (C:/Users/...)
-			-w        Use Windows formatting (C:\\Users\\...)
-			-u        Use Unix formatting (/c/Users/...)
-			-l        Use "long names" when printing Windows paths (ignored for -u).
+		    -L    (default) Print path with symbolic links.
+		    -P    Print path without any symbolic links.
+		    -m    (default) Like --windows, but with forward slashes (C:/Users/...)
+		    -w    Use Windows formatting (C:\\Users\\...)
+		    -u    Use Unix formatting (/c/Users/...)
+		    -l    Use "long names" when printing Windows paths (ignored for -u).
+		    -C    Copy the path to clipboard.
 		EOF
-		test $help_fd = 1
-		return $? #
+		# return 0 if help_fd = 1, 1 otherwise
+		test $help_fd = 1; return $?
 	fi
 
 	# cyg_long is ignored unless using mixed/windows mode
-	if [ $cyg_opts = w ] || [ $cyg_opts = m ] && [ $cyg_long = y ]; then
+	if [ $cyg_opts = w ] || [ $cyg_opts = m ] && [ $cyg_long = yes ]; then
 		cyg_opts="${cyg_opts}l"
 	fi
 
-	cygpath "-${cyg_opts}" "$(\pwd "-${pwd_opts}")"
-	return $?
+	# NB: POSIX and Bash both state that $() trims trailing newlines.
+	path="$(cygpath "-${cyg_opts}" "$(\pwd "-${pwd_opts}")")" || return $?
+
+	if [ $copy = yes ]; then
+		echo -n "\"$path\"" | clip.exe # clip.exe is a Windows built-in (lives in System32)
+	else
+		echo "$path"
+	fi
 }
-
-# Copies the absolute path to the current working directory to the clipboard.
-cpwd() {
-	local path
-	path="$(pwd "$@")"
-	path="${path%$'\n'}" # Trim trailing newline
-	path="${path%$'\r'}" # Trim trailing CR if present
-	echo -n "\"$path\"" | clip.exe # clip.exe is a Windows built-in (lives in System32)
-	return $?
-}
-
-# RE: the mess of symbols in `"${path%$'\n'}"` above:
-# - $'string' is the same as 'string', but with ANSI-C escapes processed.
-# - From bash manual: In "${parameter%word}" (and all other substitutions), "'word' is subject
-#   to tilde expansion, parameter expansion, command substitutions, and arithmetic expansion"
-# (Bash manual sections 3.1.2.4 "ANSI-C Quoting" and 3.5.3 "Shell Parameter Expansion").
-
 
 # Prompt
 # -----------------------------------------------------------------------------
