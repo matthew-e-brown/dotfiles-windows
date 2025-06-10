@@ -41,7 +41,7 @@ __pwd() {
 			-l        Use "long names" when printing Windows paths (ignored for -u).
 		EOF
 		test $help_fd = 1
-		return $?
+		return $? #
 	fi
 
 	# cyg_long is ignored unless using mixed/windows mode
@@ -57,12 +57,17 @@ __pwd() {
 cpwd() {
 	local path
 	path="$(pwd "$@")"
-	path="${path%\n}" # Trim trailing newline
-	path="${path%\r}" # Trim trailing CR if present
+	path="${path%$'\n'}" # Trim trailing newline
+	path="${path%$'\r'}" # Trim trailing CR if present
 	echo -n "\"$path\"" | clip.exe # clip.exe is a Windows built-in (lives in System32)
 	return $?
 }
 
+# RE: the mess of symbols in `"${path%$'\n'}"` above:
+# - $'string' is the same as 'string', but with ANSI-C escapes processed.
+# - From bash manual: In "${parameter%word}" (and all other substitutions), "'word' is subject
+#   to tilde expansion, parameter expansion, command substitutions, and arithmetic expansion"
+# (Bash manual sections 3.1.2.4 "ANSI-C Quoting" and 3.5.3 "Shell Parameter Expansion").
 
 
 # Prompt
