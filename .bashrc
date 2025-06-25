@@ -93,3 +93,9 @@ PROMPT_COMMAND='__git_ps1 "$__PROMPT_BEFORE_GIT" "$__PROMPT_AFTER_GIT" " (%s)"'
 # -----------------------------------------------------------------------------
 
 export LESS='-FRQ'
+
+# Shell integrations
+# -----------------------------------------------------------------------------
+
+# Trying out Zoxide for a while :)
+eval "$(zoxide init bash --cmd cd)"
