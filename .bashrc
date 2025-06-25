@@ -3,6 +3,8 @@
 # Aliases and functions
 # -----------------------------------------------------------------------------
 
+alias ll='ls -lah'
+
 # Dotfiles repo
 alias dots='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 
