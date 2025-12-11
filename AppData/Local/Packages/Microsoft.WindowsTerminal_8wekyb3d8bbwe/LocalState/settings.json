@@ -34,7 +34,6 @@
         }
     ],
     "alwaysShowTabs": true,
-    "confirmCloseAllTabs": false,
     "copyFormatting": "html",
     "copyOnSelect": false,
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
@@ -73,7 +72,6 @@
         {
             "closeOnExit": "graceful",
             "colorScheme": "Campbell",
-            "experimental.rightClickContextMenu": true,
             "font": 
             {
                 "face": "Maple Mono Custom NF",
@@ -81,12 +79,14 @@
             },
             "historySize": 16001,
             "padding": "14",
+            "rightClickContextMenu": true,
             "scrollbarState": "visible"
         },
         "list": 
         [
             {
                 "closeOnExit": "always",
+                "colorScheme": "Campbell",
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
                 "hidden": false,
                 "icon": "C:\\Program Files\\Git\\git-bash.exe",
@@ -152,5 +152,6 @@
     "tabWidthMode": "titleLength",
     "themes": [],
     "useAcrylicInTabRow": true,
+    "warning.confirmCloseAllTabs": false,
     "wordDelimiters": " /\\()\"'-_.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
