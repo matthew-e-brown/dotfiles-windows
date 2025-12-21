@@ -67,4 +67,6 @@
 # This might mean accidentally ignoring some *other* folder also named "target",
 # but... I think it's pretty unlikely that I have another folder named exactly
 # "target". Case sensitivity might be an issue... Might have to tweak it later.
-target/
+**/target/debug/
+**/target/release/
+**/target/bench/
