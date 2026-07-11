@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
     parser.add_argument(
         'format',
-        choices=[ 'mp3', 'aiff' ],
+        choices=['mp3', 'aiff'],
         type=str,
         help="the format to convert the FLAC to"
     )
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     )
 
     args = parser.parse_args()
-    code = main(args.format, args.dirs, args.overwrite, args.verbose)
+    code = main(args.format, args.dirs, args.force, args.verbose)
 
     if not code:
         print("\nDone!")
