@@ -63,6 +63,7 @@
 # ➕ Add your rules below
 # ------------------------------------------------------------
 
+**/node_modules/
 
 # This might mean accidentally ignoring some *other* folder also named "target",
 # but... I think it's pretty unlikely that I have another folder named exactly
